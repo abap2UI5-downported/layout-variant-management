@@ -1521,12 +1521,12 @@ GET REFERENCE OF <temp38> INTO Head.
 *      result = z2ui5_cl_stmpncfctn_api=>rtti_get_data_element_texts( CONV #( layout-rollname ) )-long.
       
       temp41 = layout-rollname.
-      result = z2ui5_cl_stmpncfctn_api=>rtti_get_data_element_texts( temp41 )-short.
+      result = z2ui5_cl_util=>rtti_get_data_element_texts( temp41 )-short.
     ELSE.
 *      result = z2ui5_cl_stmpncfctn_api=>rtti_get_data_element_texts( CONV #( layout-alternative_text ) )-long.
       
       temp42 = layout-alternative_text.
-      result = z2ui5_cl_stmpncfctn_api=>rtti_get_data_element_texts( temp42 )-short.
+      result = z2ui5_cl_util=>rtti_get_data_element_texts( temp42 )-short.
     ENDIF.
 
     IF result IS INITIAL.
