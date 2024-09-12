@@ -1054,6 +1054,7 @@ DATA t_del TYPE temp3.
 
     " create the tab first if the db fields were added/deleted
     DATA t_comp TYPE abap_component_tab.
+    DATA comp LIKE LINE OF t_comp.
     DATA temp19 LIKE LINE OF t_comp.
     DATA lr_comp LIKE REF TO temp19.
       DATA temp20 TYPE z2ui5_cl_pop_display_layout=>ty_s_positions.
@@ -1113,6 +1114,13 @@ DATA t_pos TYPE temp5.
 DATA pos LIKE REF TO <temp36>.
                 DATA pos_guid TYPE sysuuid_c32.
     t_comp = z2ui5_cl_util=>rtti_get_t_attri_by_any( data ).
+
+    
+    LOOP AT t_comp INTO comp.
+      IF   comp-type->type_kind = cl_abap_elemdescr=>typekind_oref.
+        DELETE t_comp.
+      ENDIF.
+    ENDLOOP.
 
     
     
